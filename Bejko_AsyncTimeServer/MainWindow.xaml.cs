@@ -25,6 +25,7 @@ namespace Bejko_AsyncTimeServer
 
         AsyncSocketServer mServer;
         bool flag = false;
+        bool d = false;
 
         public MainWindow()
         {
@@ -32,18 +33,36 @@ namespace Bejko_AsyncTimeServer
             mServer = new AsyncSocketServer();
             Lbl_msg.Foreground = Brushes.Red;
             btn_invia.Background = Brushes.Red;
+            live.Visibility = Visibility.Hidden;
+            lbl_live.Visibility = Visibility.Hidden;
+            lbl_live2.Visibility = Visibility.Hidden;
 
             //  DispatcherTimer setup
 
             DispatcherTimer dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
                 dispatcherTimer.Tick += new EventHandler(Logo);
-                dispatcherTimer.Interval = new TimeSpan(0, 0, 0);
+                dispatcherTimer.Interval = new TimeSpan(0, 0, 1);
                 dispatcherTimer.Start();
         }
         private void Logo(object sender, EventArgs e)
         {
-            DateTime thisDay = DateTime.Today;
-            lbl_real_time.Content = thisDay.ToString("g");
+            DateTime oggi = DateTime.Now;
+            lbl_real_time.Content = oggi.ToString();
+            if (d == false)
+            {
+                lbl_live.Foreground = Brushes.Red;
+                lbl_live2.Foreground = Brushes.White;
+                d = true;
+            }
+            else
+            {
+                lbl_live.Foreground = Brushes.Black;
+                lbl_live2.Foreground = Brushes.Red;
+                d = false;
+            }
+
+
+
         }
 
         private void btn_ascolta_Click(object sender, RoutedEventArgs e)
@@ -57,6 +76,9 @@ namespace Bejko_AsyncTimeServer
                 btn_kick.Background = Brushes.Red;
                 btn_invia.Background = Brushes.Green;
                 mServer.In_Ascolto();
+                live.Visibility = Visibility.Visible;
+                lbl_live.Visibility = Visibility.Visible;
+                lbl_live2.Visibility = Visibility.Visible;
                 flag = true;
 
             }

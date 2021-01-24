@@ -12,7 +12,7 @@
         </Grid.ColumnDefinitions>
         <Button x:Name="btn_kick" Content="Kick All" HorizontalAlignment="Left" Margin="63,118,0,0" VerticalAlignment="Top" Width="88" Height="42" Click="btn_kick_Click" Background="#FF0080FF" BorderBrush="#FF0080FF" Foreground="#FFF2F6F8" FontFamily="Eras ITC" FontSize="20" FontWeight="Bold"/>
         <Button x:Name="btn_ascolta" Content="START" HorizontalAlignment="Left" Margin="26,86,0,0" VerticalAlignment="Top" Width="88" Height="42" Click="btn_ascolta_Click" BorderBrush="#FF0068FF" Background="#FF0080FF" BorderThickness="1" FontWeight="Bold" FontSize="20" FontFamily="Eras ITC" Foreground="#FFF2F6F8"/>
-        <Label x:Name="Lbl_msg" Content="Server spento" HorizontalAlignment="Left" Margin="226,110,0,0" VerticalAlignment="Top" Height="31" Width="131"/>
+        <Label x:Name="Lbl_msg" Content="Server spento." HorizontalAlignment="Left" Margin="224,86,0,0" VerticalAlignment="Top" Height="31" Width="131"/>
 
         <TextBox x:Name="txt_messaggio" HorizontalAlignment="Left" Height="52" TextWrapping="Wrap" VerticalAlignment="Top" Width="344" Margin="31,221,0,0"/>
         <Label x:Name="lbl_title" Content="Time Server" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Background="#00000000" Foreground="#FF0086D3" FontFamily="Rockwell Extra Bold" Height="71" Width="386" FontSize="52"/>
@@ -23,5 +23,8 @@
         <Label x:Name="lbl_hr_2" Content="_____________________________________" HorizontalAlignment="Left" Margin="292,177,0,0" VerticalAlignment="Top" Width="104"/>
         <Rectangle Fill="#FF0080FF" HorizontalAlignment="Left" Height="100" Margin="31,301,0,0" Stroke="Black" VerticalAlignment="Top" Width="344"/>
         <Label Content="Questo program è stato fatto da Marelio Bejko &#xD;&#xA;-&#xD;&#xA;-&#xD;&#xA;-&#xD;&#xA; &#x9;&#x9;&#x9;        Ci sara sempre la mia firma" HorizontalAlignment="Left" Margin="40,306,0,0" VerticalAlignment="Top" Height="95" Width="328" FontFamily="Palatino Linotype" Foreground="#FFF2F6F8"/>
+        <Label x:Name="lbl_live2" Content="LIVE" HorizontalAlignment="Left" Margin="258,113,0,0" VerticalAlignment="Top" FontFamily="Eras ITC" FontSize="20" Background="#FF0080FF" Foreground="#FFF2F6F8" FontWeight="Bold"/>
+        <Rectangle x:Name="live" Fill="#FF0080FF" HorizontalAlignment="Left" Height="33" Margin="315,113,0,0" VerticalAlignment="Top" Width="26"/>
+        <Label x:Name="lbl_live" Content="." HorizontalAlignment="Left" Margin="312,55,0,0" VerticalAlignment="Top" FontFamily="Microsoft PhagsPa" Height="97" Width="77" FontSize="72" FontWeight="Bold"/>
     </Grid>
 </Window>

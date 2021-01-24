@@ -52,7 +52,7 @@ namespace Bejko_SocketAsyncLib
 			Debug.WriteLine("Server avviato!");
 
 
-			DateTime thisDay = DateTime.Today;
+			DateTime oggi = DateTime.Now;
 			// mi attrezzo per ricevere un messaggio dal client
 			// siccome è di tipo stream io riceverò dei byte, o meglio un byte array
 			// riceverò anche il numero di byte.
@@ -60,14 +60,7 @@ namespace Bejko_SocketAsyncLib
 			string bot = "ChatBot :  Benvenuto client\n\r\n\r" +
 						 "ChatBot : Se ti server aiuta basta inviare \n\r" +
 						 "#CMD  ( Per vederi tutti i commandi )\n\r\n \r" +
-						 thisDay.ToString("g") + "\n\r";
-
-
-
-
-
-
-
+						 oggi.ToString() + "\n\r";
 			//invio al client il messaggio del benvenuto
 			buff = Encoding.ASCII.GetBytes(bot);
 
@@ -160,8 +153,8 @@ namespace Bejko_SocketAsyncLib
 			{
 				foreach (TcpClient client in mClients)
 				{
-					DateTime thisDay = DateTime.Today;
-					byte[] buff = Encoding.ASCII.GetBytes("\r\n" + thisDay.ToString("g") + " \r\n");
+					DateTime oggi = DateTime.Now;
+					byte[] buff = Encoding.ASCII.GetBytes("\r\n" + oggi.ToString() + " \r\n");
 					client.GetStream().WriteAsync(buff, 0, buff.Length);
 				}
 			}
@@ -191,8 +184,8 @@ namespace Bejko_SocketAsyncLib
 
 				if (construtore.ToString() == "time" || construtore.ToString() == "data")
 				{
-					DateTime thisDay = DateTime.Today;
-					byte[] buff = Encoding.ASCII.GetBytes(thisDay.ToString("g") + " \r\n");
+					DateTime oggi = DateTime.Now;
+					byte[] buff = Encoding.ASCII.GetBytes(oggi.ToString() + " \r\n");
 					client.GetStream().WriteAsync(buff, 0, buff.Length);
 					flags = true;
 
