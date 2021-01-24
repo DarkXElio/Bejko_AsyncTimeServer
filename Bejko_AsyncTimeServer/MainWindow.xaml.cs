@@ -50,7 +50,7 @@ namespace Bejko_AsyncTimeServer
         {
             if (flag == false)
             {
-                Lbl_msg.Content = "Server Avviato";
+                Lbl_msg.Content = "Server Avviato ";
                 Lbl_msg.Foreground = Brushes.Green;
                 lbl_title.Foreground = Brushes.Green;
                 btn_ascolta.Background = Brushes.Green;
