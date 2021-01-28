@@ -29,6 +29,7 @@ namespace Bejko_AsyncTimeServer
 
         public MainWindow()
         {
+
             InitializeComponent();
             mServer = new AsyncSocketServer();
             Lbl_msg.Foreground = Brushes.Red;
@@ -80,6 +81,10 @@ namespace Bejko_AsyncTimeServer
                 lbl_live.Visibility = Visibility.Visible;
                 lbl_live2.Visibility = Visibility.Visible;
                 flag = true;
+                lbl_server_chiuso.Visibility = Visibility.Hidden;
+                lockinviasopra.Visibility = Visibility.Hidden;
+                img_lock.Visibility = Visibility.Hidden;
+                
 
             }
 
@@ -91,8 +96,23 @@ namespace Bejko_AsyncTimeServer
         {
             if (flag == true)
             {
-                mServer.Dissconetti();
-                flag = false;
+                MessageBoxResult result = MessageBox.Show("Sei sicuro di Kick-are tutti i clienti?", "Time Server", MessageBoxButton.YesNoCancel);
+                switch (result)
+                {
+                    case MessageBoxResult.Yes:
+                        mServer.Dissconetti();
+                        flag = false;
+                        break;
+                    case MessageBoxResult.No:
+                        MessageBox.Show("Okeyyy!", "TimeServer");
+                        break;
+                    case MessageBoxResult.Cancel:
+                        break;
+                }
+
+
+
+              
             }
             else
             {
@@ -107,6 +127,7 @@ namespace Bejko_AsyncTimeServer
             if (flag == true)
             {
                 mServer.InviaATuttiClient(txt_messaggio.Text);
+
             }
             else
             {

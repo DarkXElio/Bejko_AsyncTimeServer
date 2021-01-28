@@ -100,5 +100,11 @@
       <Name>Bejko_SocketAsyncLib</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="lock-2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="chain_PNG3.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

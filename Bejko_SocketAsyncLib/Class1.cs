@@ -64,20 +64,23 @@ namespace Bejko_SocketAsyncLib
 			//invio al client il messaggio del benvenuto
 			buff = Encoding.ASCII.GetBytes(bot);
 
-			while (true)
-			{
+				while (true)
+				{
 
-				TcpClient client = await mServer.AcceptTcpClientAsync();
-				buff = Encoding.ASCII.GetBytes(bot);
-				await client.GetStream().WriteAsync(buff, 0, buff.Length);
-				mClients.Add(client);
 
-				//Con il comando "client.Client.RemoteEndPoint" ridarà l'IP e la porta del client che si è appena connesso
-				Debug.WriteLine("Client connessi: {0}. Client attualmente connesso: {1}", mClients.Count, client.Client.RemoteEndPoint);
-				RiceviMessaggio(client);
-				
-	
-			}
+
+					TcpClient client = await mServer.AcceptTcpClientAsync();
+					buff = Encoding.ASCII.GetBytes(bot);
+					await client.GetStream().WriteAsync(buff, 0, buff.Length);
+					mClients.Add(client);
+
+					//Con il comando "client.Client.RemoteEndPoint" ridarà l'IP e la porta del client che si è appena connesso
+					Debug.WriteLine("Client connessi: {0}. Client attualmente connesso: {1}", mClients.Count, client.Client.RemoteEndPoint);
+					RiceviMessaggio(client);
+
+
+				}
+
 		}
 
 		public async void RiceviMessaggio(TcpClient client)
@@ -170,6 +173,7 @@ namespace Bejko_SocketAsyncLib
 			StringBuilder construtore = new StringBuilder();
 			bool flags = false;
 			int conut = 1;
+			string passa = "";
 			try
 			{
 
@@ -181,8 +185,9 @@ namespace Bejko_SocketAsyncLib
 					}
 				}
 
+				passa=construtore.ToString(); 
 
-				if (construtore.ToString() == "time" || construtore.ToString() == "data")
+				if (construtore.ToString().ToUpper() == "TIME" || construtore.ToString().ToUpper() == "DATA")
 				{
 					DateTime oggi = DateTime.Now;
 					byte[] buff = Encoding.ASCII.GetBytes(oggi.ToString() + " \r\n");
@@ -191,7 +196,7 @@ namespace Bejko_SocketAsyncLib
 
 				}
 
-				if (construtore.ToString() == "cmd")
+				if (construtore.ToString().ToUpper() == "CMD")
 				{
 					
 					byte[] buff = Encoding.ASCII.GetBytes("ChatBot: Posso rispondere solo alle seguenti domande \n\r" +
@@ -205,7 +210,8 @@ namespace Bejko_SocketAsyncLib
 
 				if (flags == false)
 				{
-					byte[] buff = Encoding.ASCII.GetBytes("Non ho capito \n\r");
+					byte[] buff = Encoding.ASCII.GetBytes("Non ho capito \n\r" +
+						 "#CMD  ( Per vederi tutti i commandi )\n\r\n \r");
 					client.GetStream().WriteAsync(buff, 0, buff.Length);
 					flags = true;
 				}
